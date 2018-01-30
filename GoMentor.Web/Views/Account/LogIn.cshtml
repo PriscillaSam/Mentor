@@ -1,45 +1,64 @@
 ﻿@model LogInViewModel
 @{
-    ViewBag.Title = "LogIn";
+    ViewBag.Title = "SignIn";
 }
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="banner col-md-12">
+                @*<img src="~/Content/Images/42.jpg" class="img-responsive fill" />*@
+                <div class="col-md-6 offset-4">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-10 offset-2">
-            <form class="form-horizontal" action="" method="post">
-                <h4>Login</h4>
-                <hr />
-                @Html.ValidationSummary(false," ", new { @class = "text-danger"})
-                <div class="form-group row">
-                    <label class="col-md-1 control-label">Email</label>
-                    <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-1 control-label">Password</label>
-                    <div class="col-md-9">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class=" offset-1 col-md-9">
-                        <label class="custom-control custom-checkbox">
-                            Remember me
-                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description"></span>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="offset-1 col-md-9">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-2x fa-unlock"></i>Log In</button>
-                    </div>
-                </div>
+                    <div class="form-horizontal">
 
-            </form>
+                        <h3 class="text-right h-30"><i class="fa fa-lock"></i> Sign In</h3>
+                        <hr />
+                        @Html.ValidationSummary(false, " ", new { @class = "text-danger" })
+                        <div class="form-group col-10">
+                            <label class="control-label">Your Email Address</label>
+                            <div class="">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "sample@test.com" })
+                            </div>
+                        </div>
+                        <div class="form-group col-10">
+                            <label class="control-label">Your Password</label>
+                            <div class="">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            </div>
+                        </div>
+                        <div class="form-group col-10">
+                            <label class="custom-control custom-checkbox">
+                                Remember me
+                                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group col-10">
+                            <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-fw fa-unlock-alt"></i>Sign In</button>
+                        </div>
+                        <div class="form-group col-10">
+                            <p class="text-center text-info" style="margin-top:10px">Don't have an account with Mentor?</p>
+                        </div>
+
+                        <div class="form-group col-10">
+                            <a href="@Url.Action("signup", "account")" class="btn btn-block btn-outline-danger"><i class="fa fa-pencil-square-o fa-fw"></i>Create Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+
+}
+
+@section scripts{
+    <script src="~/Library/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/Library/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
 

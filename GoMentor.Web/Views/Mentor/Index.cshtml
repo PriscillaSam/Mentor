@@ -1,0 +1,43 @@
+﻿
+@model UserModel
+@{
+    ViewBag.Title = "Mentor";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+
+
+@*This is the part to be rendered in the render body section on the layout page*@
+<div class="row">
+    <div class="content-header col-lg-12">
+        <h3 class="pull-right">Welcome @Model.FirstName, @Model.LastName</h3>
+    </div>
+
+</div>
+<div class="container-fluid control-background" style="min-height:600px">
+    <p >What would you like to do today?</p>
+    <hr />
+    <div class="row h-30">
+        <div class="col-md-3 box green">
+            <i class="fa fa-3x fa-fw fa-calendar"></i><a href="@Url.Action("createschedule")">Create schedule</a>
+
+        </div>
+        <div class="col-md-3 box red">
+            <i class="fa fa-3x fa-fw fa-users"></i><a href="@Url.Action("")">View Mentees</a>
+
+        </div>
+        <div class="col-md-3 box blue">
+            <i class="fa fa-3x fa-fw fa-edit"></i><a href="@Url.Action("edit")">Edit Profile</a>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script src="~/Library/jquery/dist/jquery.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+}
+

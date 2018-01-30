@@ -1,0 +1,82 @@
+﻿@model MentorBioModel
+
+@{
+    ViewBag.Title = "Add Bio";
+}
+
+
+<div class="container">
+    <div class="row image-holder">
+        <div class="col-md-6 offset-3  h-30">
+            <img src="~/Content/Images/logo.jpg" class="img-responsive fill" style="" />
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-6 offset-1">
+
+            @using (Html.BeginForm())
+            {
+
+                <div class="form-horizontal">
+
+                    <div class="form-group required">
+
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-12" })
+
+
+                        <div class="custom-control custom-radio col-md-10">
+                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @class = "form-control radio" }) Male
+                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @class = "form-control radio" }) Female
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+                        <div class="col-md-1 custom-control custom-radio">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.MobileNo, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Birthday, "date", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Bio, new { @class = "form-control", id = "exampleTextArea", placeholder = "Give a brief description of yourself" })
+                            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>

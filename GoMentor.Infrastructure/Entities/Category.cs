@@ -8,6 +8,6 @@ namespace GoMentor.Infrastructure.Entities
         [Key]
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public virtual ICollection<Mentor> Mentors { get; set; } = new HashSet<Mentor>();
+
     }
 }

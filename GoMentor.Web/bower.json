@@ -1,3 +1,6 @@
 {
-    "name": "gomentor"
+  "name": "gomentor",
+  "dependencies": {
+    "jquery-validation-unobtrusive": "^3.2.6"
+  }
 }

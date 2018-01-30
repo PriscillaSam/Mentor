@@ -1,0 +1,45 @@
+﻿@model AssignViewModel
+
+@{
+    ViewBag.Title = "Assign";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="content-header col-md-12">
+        <h3>Mentee Details</h3>
+    </div>
+</div>
+<div class="row h-30 ">
+    <div class="col-md-6 offset-1">
+        <section>
+            <h4>Name</h4>
+            <p>@Model.Mentee.User.FirstName @Model.Mentee.User.LastName</p>
+
+
+            <h5>Email</h5>
+            <p>@Model.Mentee.User.Email</p>
+
+            <h6>Category</h6>
+            <p>@Model.Mentee.Category</p>
+        </section>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6 offset-1">
+        <form method="post" class="form-horizontal">
+            <fieldset>
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Mentee.UserId, new { Value = Model.Mentee.UserId.ToString() })
+                @Html.DropDownListFor(model => model.Mentor.UserId, ViewBag.UserId as SelectList,"--Select Mentor--", new { @class = "custom-select col-md-8" })
+                <button class="btn btn-primary" type="submit">Assign</button>
+            </fieldset>
+
+        </form>
+    </div>
+
+
+</div>
+

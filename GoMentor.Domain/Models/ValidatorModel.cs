@@ -14,7 +14,7 @@ namespace GoMentor.Domain.Models
         {
             Validator.ValidateObject(this, new ValidationContext(this, serviceProvider: null, items: null));
         }
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             return new List<ValidationResult>();
         }

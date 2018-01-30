@@ -1,36 +1,359 @@
 ﻿
 @font-face {
-    font-family:'Nunito sans';
+    font-family: 'Nunito sans';
     src: url('customfont.woff2') format('woff2');
 }
 
 body {
-  
     padding-bottom: 20px;
-    font-family:'Nunito sans','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: 'Nunito sans',Verdana, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+a:hover{
+    text-decoration:none;
+
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+h4, h2, h3 {
+    margin: 0;
 }
 
-h4,h2{
-    margin-top:30px;
-    margin-bottom:30px;
+.h-30 {
+    margin-top: 30px;
 }
 
-.pull-left{
-    margin-right:0 ;
+
+/*Lux Bootstrap Overrides*/
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-.nav-item a:hover{
-    color:crimson;
+
+
+/*Home page styles*/
+
+.large-text {
+    font-size: 18px;
 }
+
+.vision {
+    margin-top: 100px;
+}
+
+.line {
+    background-color: crimson;
+}
+
+.main {
+    margin: 0 auto;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner-title {
+    position: absolute;
+    bottom: 35%;
+    width: 100%;
+    display: none;
+    background-color: black;
+    background: linear-gradient(to right,black,#162639);
+    opacity: 0.6;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+
+    .banner-title h5 {
+        margin-bottom: 20px;
+    }
+
+/*Design for sign up and log in page*/
+.content {
+    background-image: url('Images/17.jpg');
+    background-position: center;
+    background-size: cover;
+    height: auto;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.required .control-label:after {
+    content: " *";
+    color: red;
+}
+
+.radio {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.canvaz {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/*Design for textboxes*/
+.form-control {
+    border-radius: 2px;
+}
+
+.validation-summary-errors {
+    background-color: #f6dddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.content-box {
+    width: 30%;
+    background-color: white;
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-right: 30px;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+/*User page*/
+
+.fill {
+    width: 100%;
+}
+
+.fixed {
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+    z-index: 100;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.side-section {
+    min-height: 600px;
+    padding: 0;
+    color: white;
+    background-color: #95a5a6;
+}
+
+.logo {
+    background-color: #162639;
+    height: 50px;
+}
+.mentor-logo {
+    padding-top: 5px;
+    padding-left: 10px;
+    letter-spacing:1px;
+}
+
+    .mentor-logo a {
+        color: #e7f2f8;
+    }
+
+   
+.user {
+    background-color: #293f50;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#user-name {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.profile-picture {
+    height: 100px;
+    width: 100px;
+    margin: 10px auto;
+    border-radius: 50%;
+    background-color: azure;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+}
+
+    .nav-list ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+.nav-list-item {
+    margin: 0;
+    padding: 0px 0;
+    color: white;
+    border-bottom: 1px solid #faf6f6;
+}
+
+    .nav-list-item :hover {
+        background-color: #162639;
+    }
+
+    .nav-list-item a {
+        width: 100%;
+        padding: 20px 20px;
+        display: inline-block;
+        color: white;
+    }
+
+        .nav-list-item a:hover {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .nav-list-item a span {
+            margin-left: 20px;
+        }
+
+.content-body {
+    background-color: #e8e8fc;
+}
+
+.content-header {
+    background-color: #2c3e50;
+    background: linear-gradient( to right,#2c3e50,#648880,#e74c3c);
+    height: 50px;
+}
+
+    .content-header h3 {
+        margin-top: 10px;
+        color: white;
+        letter-spacing: 1px;
+    }
+
+.control-background {
+    background-color: #f3f4f5;
+    padding: 10px 20px;
+    margin: 15px 0px;
+}
+
+.panes {
+    margin: 10px 10px 10px 10px;
+    padding: 0;
+    border-radius: 5px;
+    background-color: white;
+    max-height: 270px;
+}
+
+
+.profile-pix {
+    height: 100px;
+}
+
+.pane-title {
+    margin: 10px 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.btn-round {
+    height: 60px;
+    width: 60px;
+    margin-top: 17px;
+    border: none;
+    box-shadow: 2px 2px 2px #95a5a6;
+    border-radius: 50%;
+}
+
+.btn-section {
+    height: 200px;
+}
+/*Bio form*/
+.image-holder {
+}
+/*Text styles*/
+.text-default {
+    color: #2c3e50;
+}
+
+.p-lead {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.p-large {
+    font-size: 15px;
+}
+
+.text-des {
+    font-size: 15px;
+}
+/*colors*/
+.red {
+    background-color: #e74c3c;
+}
+
+    .red:hover {
+        background-color: #c0392b
+    }
+
+.blue {
+    background-color: #34495e;
+}
+
+    .blue:hover {
+        background-color: #2c3e50;
+    }
+
+.green {
+    background-color: #1abc9c;
+}
+
+    .green:hover {
+        background-color: #16a085;
+    }
+
+.white {
+    color: white
+}
+
+.box {
+    height: 100px;
+    padding: 20px 0px 20px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+}
+
+    .box a {
+        width: 100%;
+        color: white;
+        height: 100%;
+    }
+
+        .box a:hover {
+            text-decoration: none;
+        }
+
+    .box:hover {
+    }

@@ -10,10 +10,44 @@ namespace GoMentor.Domain.Managers
 {
     public class MentorManager
     {
-        private IMentorRepository repo;
-        public MentorModel GetMentor(int id )
+        private IMentorRepository _repo;
+        public MentorManager(IMentorRepository repo)
         {
-            return repo.GetMentor(id);
+            _repo = repo;
+        }
+        public MentorModel GetMentor(int userId )
+        {
+            return _repo.GetMentor(userId);
+        }
+
+        public void AddMentor(MentorModel model)
+        {
+            //validate model
+            model.Validate();
+
+            //Check if mentor record already exists
+            var mentor = _repo.GetMentor(model.UserId);
+
+            if(mentor != null)
+            {
+                throw new Exception("This record already exists!!!");
+            }
+            _repo.AddMentor(model);
+
+        }
+
+        public void EditMentor(MentorModel model, int userId)
+        {
+            _repo.EditMentor(model, userId);
+        }
+        public void GetMentors()
+        {
+            var mentorList = _repo.GetMentors();
+        }
+
+        public MentorModel[] GetMentorsByCategory(string category)
+        {
+            return _repo.GetMentorsByCategory(category);
         }
     }
 }

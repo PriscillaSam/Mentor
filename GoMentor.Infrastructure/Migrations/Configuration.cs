@@ -19,33 +19,24 @@ namespace GoMentor.Infrastructure.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-
-            //Adding Roles
-            context.Roles.AddOrUpdate(r => r.Name,
-                new Entities.Role
-                {
-                    Name = "Admin"
-                },
-                new Entities.Role
-                {
-                    Name = "Mentor"
-                },
-                new Entities.Role
-                {
-                    Name = "Mentee"
-                }
+            context.Roles.AddOrUpdate(r => r.Name, new Entities.Role
+            {
+                RoleId = 1,
+                Name = "Admin"
+            },
+            new Entities.Role
+            {
+                RoleId = 2,
+                Name = "Mentor"
+            },
+            new Entities.Role
+            {
+                RoleId = 3,
+                Name = "Mentee"
+            }          
+            
             );
-
-            //Adding Users
-            context.Users.AddOrUpdate(
-                new Entities.User
-                {
-                    Email = "priscillasamiduh@gmail.com",
-                    Password = "password",
-                    FirstName = "Priscilla",
-                    LastName = "Sam-Iduh"
-                                  
-                });
+           
         }
     }
 }

@@ -12,11 +12,15 @@ namespace GoMentor.Domain.Models
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName => $"{FirstName} {LastName}";
-        public string[] Roles { get; set; }
-
+        public string Role { get; set; }
         public string Image { get; set; }
 
 
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
+
+    
 }

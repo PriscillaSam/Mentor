@@ -1,0 +1,32 @@
+﻿@model MenteeModel
+@{
+    ViewBag.Title = "Mentee";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+
+
+@*This is the part to be rendered in the render body section on the layout page*@
+<div class="row">
+    <div class="content-header col-lg-12">
+        <h3>Welcome @Model.User.FirstName, @Model.User.LastName</h3>
+    </div>
+
+</div>
+<div class="container-fluid control-background">
+    <p>What would you like to do today?</p>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+</div>
+
+

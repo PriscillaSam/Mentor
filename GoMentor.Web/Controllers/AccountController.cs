@@ -1,7 +1,10 @@
 ﻿using GoMentor.Domain.Managers;
+using GoMentor.Domain.Models;
 using GoMentor.Infrastructure.Entities;
 using GoMentor.Infrastructure.Repositories;
+using GoMentor.Infrastructure.Utilities;
 using GoMentor.Web.Models;
+using GoMentor.Web.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
@@ -9,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
+using System.Web.ApplicationServices;
 using System.Web.Mvc;
 
 namespace GoMentor.Web.Controllers
@@ -18,41 +22,32 @@ namespace GoMentor.Web.Controllers
         private UserManager _user;
 
         public IAuthenticationManager Authentication => HttpContext.GetOwinContext().Authentication;
-        // GET: Account
-        public AccountController()
+
+        public AccountController(UserManager user)
         {
-            _user = new UserManager(new UserRepository(new DataEntities()));
+            _user = user;
         }
-        public ActionResult LogIn()
+
+        public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult LogIn(LogInViewModel model, string returnUrl)
+        public ActionResult Login(LogInViewModel model, string returnUrl)
         {
+
             //check if model state is valid
             if (ModelState.IsValid)
             {
+                //Get User by log in details
                 var user = _user.LogIn(model.Email, model.Password);
-                //
+                
                 if (user != null)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                        new Claim(ClaimTypes.Email, user.Email),
-                        new Claim(ClaimTypes.Name, user.Email),
-                        new Claim(ClaimTypes.GivenName, user.FirstName),
-                        new Claim(ClaimTypes.Surname, user.LastName),
-                    };
+                {                  
+                    //Gets user identity based on login info
+                    var identity = user.GetUserIdentity();
 
-                    //Check to see the roles of User
-                    var roles = user.Roles.Select(r => new Claim(ClaimTypes.Role, r));
-                    claims.AddRange(roles);
-
-                    //Sign user in based on the identity provided
-                    var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                     var props = new AuthenticationProperties { IsPersistent = model.RememberMe };
                     Authentication.SignIn(props, identity);
 
@@ -64,26 +59,56 @@ namespace GoMentor.Web.Controllers
 
                     else
                     {
-                        return RedirectToAction("index","home");
+                        return RedirectToAction("index", user.Role);
                     }
                 }
-            } 
+            }
 
             ModelState.AddModelError("Invalid Login", "Invalid Email or Password");
             return View(model);
-          
+
         }
-        public ActionResult LogOut()
+        public ActionResult Logout()
         {
             Authentication.SignOut();
-            return RedirectToAction("login");
+            return RedirectToAction("index", "home");
         }
 
-
-        //SignIn Method
-        private void SignIn(LogInViewModel model)
+        public ActionResult Signup()
         {
-
+            var model = new SignupViewModel();
+            return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Signup(SignupViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = new UserModel
+                    {
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                    };
+
+                    //Add new user to Users table
+                    _user.RegisterUser(user, model.Password);
+                    _user.AddRole(user.UserId, 3);
+                    return RedirectToAction("addbio", "mentee", new { userId = user.UserId });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Invalid Registration", ex.Message);
+                }
+            }
+
+            return View(model);
+        }
+
+
+
     }
 }

@@ -11,8 +11,7 @@ namespace GoMentor.Infrastructure.Entities
     public class Admin
     {
         [Key, ForeignKey("User")]
-        public int UserId { get; set; }
-       
+        public int UserId { get; set; }       
         public virtual User User { get; set; }
     }
 }

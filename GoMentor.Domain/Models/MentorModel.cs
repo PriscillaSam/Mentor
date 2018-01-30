@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace GoMentor.Domain.Models
 {
-    public class MentorModel
+    public class MentorModel : ValidatorModel
     {
         public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string ProfilePicture { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
         public string MobileNo { get; set; }
-        public string PersonalInfo { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Bio { get; set; }
+        public string Category { get; set; }
+        public UserModel User { get; set; }
         public ICollection<MenteeModel> Mentees { get; set; }
+
+
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

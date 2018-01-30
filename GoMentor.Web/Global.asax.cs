@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace GoMentor.Web
     {
         protected void Application_Start()
         {
+            NinjectContainer.RegisterAssembly();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

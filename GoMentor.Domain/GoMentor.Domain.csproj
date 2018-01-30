@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="Interfaces\Repositories\IMenteeRepository.cs" />
     <Compile Include="Interfaces\Repositories\IMentorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IScheduleRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUserRepository.cs" />
+    <Compile Include="Interfaces\Utilities\IEncryption.cs" />
     <Compile Include="Managers\MenteeManager.cs" />
     <Compile Include="Managers\MentorManager.cs" />
+    <Compile Include="Managers\ScheduleManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="Models\MentorModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\ReplyModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ValidatorModel.cs" />

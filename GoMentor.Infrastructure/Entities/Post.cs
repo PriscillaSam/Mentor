@@ -11,9 +11,8 @@ namespace GoMentor.Infrastructure.Entities
     {
         [Key]
         public int PostId { get; set; }
-        public int ForumId { get; set; }
-        public int UserId { get; set; }
         public DateTime TIme { get; set; }
+
         public virtual User User { get; set; }
         public virtual Forum Forum { get; set; }
         public virtual ICollection<Reply> Replies { get; set; }

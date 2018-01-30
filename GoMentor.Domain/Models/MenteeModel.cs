@@ -1,19 +1,20 @@
-﻿namespace GoMentor.Domain.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace GoMentor.Domain.Models
 {
-    public class MenteeModel
+    public class MenteeModel : ValidatorModel
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public int MobileNo { get; set; }
-        public string ProfilePicture { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string PersonalInfo { get; set; }
-        public CategoryModel Category { get; set; }
+        public int UserId { get; set; }        
+        public string MobileNo { get; set; }        
+        public DateTime Birthday { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Bio { get; set; }
+        public string Category { get; set; }
         public MentorModel Mentor { get; set; }
+        public UserModel User { get; set; }
+        public ICollection<ScheduleModel> Schedules { get; set; } = new HashSet<ScheduleModel>();
+
     }
 }

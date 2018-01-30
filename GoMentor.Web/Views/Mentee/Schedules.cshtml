@@ -1,0 +1,54 @@
+﻿@model ScheduleModel[]
+
+@{
+    ViewBag.Title = "Schedules";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="row">
+    <div class="content-header col-md-12">
+        <h3 class="pull-right">Schedules</h3>
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+    <div>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => item.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.DateCreated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.DateCreated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.Details)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Details)
+            </dd>
+
+        </dl>
+    </div>
+}
+

@@ -12,7 +12,6 @@ namespace GoMentor.Infrastructure.Entities
         [Key]
         public int ForumId { get; set; }
         public DateTime DateCreated { get; set; }
-        public int MenteeId { get; set; }        
         public virtual Mentee Mentee { get; set; }
 
     }

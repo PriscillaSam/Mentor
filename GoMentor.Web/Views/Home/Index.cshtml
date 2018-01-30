@@ -1,9 +1,63 @@
-﻿@model LogInViewModel
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
+
 }
 
-<h2>Welcome</h2>
-<p>@User.Identity.Name</p>
+<div class="container">
 
+    <div class="row">
+        <div class="col-12 ">
+            <div class="banner">
+                <img src="~/Content/Images/74.jpg" class="img-responsive fill" />
+
+                <div class="banner-title js-fade">
+                    <h1 class="display-3" style="color:white">Mentor Community</h1>
+                    <h5 class="capitalize white">At MENTOR there are unimaginable opportunities to evolve into that person you dream of becoming</h5>
+                    <p>
+                        <a class="btn btn-outline-danger" href="@Url.Action("signup","account")" role="button">Join The Community</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="vision">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-1">
+                    <img class="img-responsive fill" src="~/Content/Images/42.jpg" />
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center">Vision</h3>
+                    <hr class="col-md-3 line" />
+                    <p class="text-center large-text">We see the younger generation and notice the lack of and complete absence of mentorship. Mentor aims to influence the next generation by building quality mentoring relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="vision">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-1">
+                    <h3 class="text-center">Mission</h3>
+                    <hr class="col-md-3 line" />
+                    <p class="text-center large-text">
+                        Mentor sees the younger generation and aims to influence
+                        it by building quality mentoring relationships. Our mission is to build quality mentoring relationships and to close the mentoring gap.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive" src="~/Content/Images/1.jpg" style="width:100%" />
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/script.js"></script>
+}

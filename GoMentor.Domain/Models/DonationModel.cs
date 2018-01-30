@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoMentor.Domain.Models
 {
-    public class DonationModel
+    public class DonationModel : ValidatorModel
     {
         public int DonationId { get; set; }
         public string NameOfDonor { get; set; }

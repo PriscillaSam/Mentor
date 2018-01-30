@@ -4,16 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mentor</title>
+
     <link href="~/Content/lux.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Library/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-fixed navbar-dark bg-primary">
         <div class="container">
+            @*<div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                       <img src="~/Content/Images/logo.jpg" alt="Mentor"/>
+                    </a>
+                </div>*@
             <a class="navbar-brand" href="@Url.Action("Index","Home")">Mentor</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
                 <span class="navbar-toggler-icon"></span>
@@ -21,38 +28,62 @@
 
             <div class="collapse navbar-collapse " id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Sign Up<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("LogIn","Account")">Log In</a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("#")">Become A Mentor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("#")">Need A Mentor?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fa fa-lg fa-user-circle"></i></a>
-                    </li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("LogIn","Account")">Sign In</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("#")">Become A Mentor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("signup","account")">Need A Mentor?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="fa fa-lg fa-user-circle"></i></a>
+                        </li>
+
+                    }
                 </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a href="@Url.Action("logout","account")" class="nav-link">Sign Out</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("index",User.Identity.GetUserIdentity().Role)" class="nav-link">
+                                <span class="thumbnail">
+                                    <img src="~/Content/Images/11.jpg" style="width:25px;height:25px;border-radius:50px" />
+                                </span>
+                                @User.Identity.GetUserIdentity().FirstName, @User.Identity.GetUserIdentity().LastName
+                            </a>
+                        </li>
+                    </ul>
+
+                }
 
             </div>
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mentor</p>
+        <footer class="foot">
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - Mentor</p>
+
+            </div>
 
         </footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>

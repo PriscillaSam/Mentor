@@ -12,14 +12,18 @@ namespace GoMentor.Infrastructure.Entities
     {
 
         [Key, ForeignKey("User")]
-        public int UserId { get; set; }   
-        public string City { get; set; }
-        public string State { get; set; }
+        public int UserId { get; set; }
         public string MobileNo { get; set; }
-        public int CategoryId { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Bio { get; set; }
+
+        //Relationships
+        public int CategoryId { get; set; } 
         public virtual Category Category { get; set; }
-        public virtual ICollection<Mentee> Mentees { get; set; } = new HashSet<Mentee>();
         public virtual User User { get; set; }
+        public virtual ICollection<Mentee> Mentees { get; set; } = new HashSet<Mentee>();
 
     }
 }

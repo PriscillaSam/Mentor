@@ -1,0 +1,92 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mentor</title>
+
+    <link href="~/Content/lux.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Library/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+
+    <div class="container body-content">
+        <div class="row">
+            <section class="side-section col-lg-3 col-md-9 col-sm-12">
+                <div class="logo">
+                    <h5 class="text-left mentor-logo">
+                        <a href="@Url.Action("index","home")"><i class="fa fa-2x fa-home"></i>Mentor</a>
+                    </h5>
+                </div>
+
+                <div class="user">
+                    <div class="profile-picture">
+                        <img alt="" src="" />
+                    </div>
+                    <p id="user-name">@User.Identity.GetUserIdentity().FirstName, @User.Identity.GetUserIdentity().LastName</p>
+                    <p style="margin-bottom:5px">@User.Identity.GetUserIdentity().Email</p>
+                    <p id="user-role" class="text-danger">@User.Identity.GetUserIdentity().Role</p>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                      
+                        <li class="nav-list-item ">
+                            <a href="@Url.Action("index")"><i class="fa fa-lg fa-dashcube"></i><span>Dashboard</span></a>
+                        </li>
+                        @if (User.IsInRole("Mentee"))
+                        {
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("userprofile")"><i class="fa fa-lg fa-user"></i><span>Profile</span></a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("schedules")"><i class="fa fa-lg fa-calendar"></i><span>Schedules</span></a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Mentor"))
+                        {
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("userprofile")"><i class="fa fa-lg fa-user"></i><span>Profile</span></a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("schedules")"><i class="fa fa-lg fa-calendar"></i><span>Schedules</span></a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="#"><i class="fa fa-lg fa-users"></i><span>Mentees</span></a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("")"><i class="fa fa-lg fa-users"></i><span>Mentees</span></a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="@Url.Action("")"><i class="fa fa-lg fa-users"></i><span>Mentors</span></a>
+                            </li>
+                        }
+                        <li class="nav-list-item">
+                            <a href=@Url.Action("logout","account")><i class="fa fa-lg fa-power-off"></i><span>Sign out</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-lg-9 col-md-9 col-sm-12">
+                @RenderBody()
+            </section>
+        </div>
+
+
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

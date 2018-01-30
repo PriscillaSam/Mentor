@@ -1,0 +1,118 @@
+﻿@model MenteeModel
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="content-header col-md-12">
+        <h3 class="pull-right">@Model.User.FirstName's Profile</h3>
+    </div>
+</div>
+
+<div class="container-fluid control-background">
+    <div class="row">
+        <div class="col-md-4 panes">
+
+            <div class="display-pix">
+                <img src="~/Content/Images/42.jpg" class="img-responsive fill" />
+            </div>
+            <div class="pane-body">
+                <h5 class=" pane-title"><i class="fa fa-fw fa-user"></i>@Model.User.FirstName @Model.User.LastName</h5>
+                <hr />
+                <p class="p-lead text-primary"><i class="fa fa-fw fa-envelope"></i> @Model.User.Email</p>
+                <hr />
+                <p class="p-lead text-primary"><i class="fa fa-fw fa-tag"></i>Category: <small class="text-muted"> @Model.Category </small></p>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-7 panes">
+                    <h5 class="pane-title"><i class="fa fa-fw fa-lg fa-map-marker"></i>Address</h5>
+                    <hr />
+                    <p class="p-lead text-muted">@Model.Address </p>
+                </div>
+
+                <div class="col-md-4 panes">
+                    <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-female"></i>Gender</h5>
+                    <hr />
+                    <p class="p-lead">@Model.Gender</p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 panes">
+                    <h5 class="pane-title"><i class="fa fa-fw fa-lg fa-phone"></i>Mobile Number</h5>
+                    <hr />
+                    <p class="p-lead text-muted">@Model.MobileNo</p>
+                </div>
+
+                <div class="col-md-4 panes">
+                    <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-calendar"></i> Birthday</h5>
+                    <hr />
+                    <p class="p-lead">@Model.Birthday.ToShortDateString()</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9 panes">
+                    <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-book"></i>Bio</h5>
+                    <hr />
+                    <p class="p-lead">@Model.Bio</p>
+                </div>
+                <div class="col-md-2">
+                    <a class=" btn btn-round red" style="color:white" href="@Url.Action("edit", "mentee")"><i class="fa fa-2x fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div>
+    <h5 class="h-30">Mentor Detail</h5>
+    <hr />
+</div>
+
+<div class="container-fluid control-background">
+    @{
+
+        if (Model.Mentor == null)
+        {
+            <div class="row">
+                <div class="col-6 offset-2">
+                    <p class="p-large text-center text-danger" style="letter-spacing:1px;">You haven't been assigned a Mentor yet. We apologize for the delay and are currently working to fix it.</p>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="row">
+            <div class="col-md-6">
+                <h5>Name</h5>
+                <p>@Model.Mentor.User.FirstName @Model.Mentor.User.LastName</p>
+
+                <h6>Email</h6>
+                <p>@Model.Mentor.User.Email</p>
+
+                
+            </div>
+            </div>
+            
+
+        }
+    }
+    <div>
+
+    </div>
+</div>
+
+
+
+

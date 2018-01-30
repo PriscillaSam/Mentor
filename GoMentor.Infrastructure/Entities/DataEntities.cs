@@ -15,7 +15,6 @@ namespace GoMentor.Infrastructure.Entities
         public DbSet<Mentor> Mentors { get; set; }
         public DbSet<Mentee> Mentees { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Forum> Fora { get; set; }

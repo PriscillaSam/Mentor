@@ -12,7 +12,6 @@ namespace GoMentor.Infrastructure.Entities
         [Key]
         public int RoleId { get; set; }
         public string Name { get; set; }
-        public ICollection<UserRole> UserRoles { get; set; }
-
+        public virtual ICollection<User> Users { get; set; }
     }
 }

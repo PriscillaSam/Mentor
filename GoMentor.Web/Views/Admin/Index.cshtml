@@ -1,0 +1,44 @@
+﻿@model AdminViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="row">
+    <div class="content-header col-lg-12">
+        <h3>Hello @Model.Admin.FirstName, @Model.Admin.LastName</h3>
+    </div>
+
+</div>
+<div class="container-fluid control-background">
+    <div class="row">
+        <p id="js-slide">What would you like to do today?</p>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 box red">
+            <i class="fa fa-3x fa-fw fa-user"></i><a href="@Url.Action("signupmentor","admin")">Add Mentor</a>
+
+        </div>
+        <div class="col-md-3 box blue">
+            <i class="fa fa-3x fa-users"></i>View All Mentors
+        </div>
+        <div class="col-md-3 box green">
+            <i class="fa fa-3x fa-users"></i>View All Mentees
+        </div>
+        <div class="col-md-3 box blue">
+            <i class="fa fa-3x fa-users"></i><a href="@Url.Action("notmentored")">View All Not Mentored</a>
+        </div>
+
+      
+    </div>
+</div>
+<div class="js-load"></div>
+
+@section scripts{
+
+    <script src="~/Library/jquery/dist/jquery.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+}
