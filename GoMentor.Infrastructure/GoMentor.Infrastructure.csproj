@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ForumRepository.cs" />
     <Compile Include="Repositories\MenteeRepository.cs" />
     <Compile Include="Repositories\MentorRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />

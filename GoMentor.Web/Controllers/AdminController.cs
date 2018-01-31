@@ -134,8 +134,19 @@ namespace GoMentor.Web.Controllers
             return View(model);
         }
 
+        //Get all mentees
+        public ActionResult Mentees()
+        {
+            var model = _mentee.GetAllMentees();
+            return View(model);
+        }
 
-
+        //Get all mentors
+        public ActionResult Mentors()
+        {
+            var model = _mentor.GetMentors();
+            return View(model);
+        }
         private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<CategoryModel> categories)
         {
             //Create new SelectListItem 

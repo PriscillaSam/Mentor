@@ -12,7 +12,7 @@ namespace GoMentor.Domain.Interfaces.Repositories
         void AddMentor(MentorModel model);
         MentorModel EditMentor(MentorModel model,int userId);
         MentorModel GetMentor(int id);
-        UserModel[] GetMentors();
+        MentorModel[] GetMentors();
         MentorModel[] GetMentorsByCategory(string category);
     }
 }

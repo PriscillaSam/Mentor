@@ -40,9 +40,10 @@ namespace GoMentor.Domain.Managers
         {
             _repo.EditMentor(model, userId);
         }
-        public void GetMentors()
+        public MentorModel[] GetMentors()
         {
             var mentorList = _repo.GetMentors();
+            return mentorList.ToArray();
         }
 
         public MentorModel[] GetMentorsByCategory(string category)

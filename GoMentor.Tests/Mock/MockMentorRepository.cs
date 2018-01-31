@@ -34,23 +34,22 @@ namespace GoMentor.Tests.Mock
         public MentorModel GetMentor(int id)
         {
             return Mentors.FirstOrDefault(u => u.UserId == id);
-
-
-            
+                       
             
         }
-
-        public UserModel[] GetMentors()
-        {
-            throw new NotImplementedException();
-        }
-
-        public MentorModel[] GetMentorsByCategory(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
+             
+       
         public MentorModel[] GetMentorsByCategory(string category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MentorModel[] GetMentors()
+        {
+            throw new NotImplementedException();
+        }
+
+        MentorModel[] IMentorRepository.GetMentors()
         {
             throw new NotImplementedException();
         }

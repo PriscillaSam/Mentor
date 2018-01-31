@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MentorModel>
+
+@{
+    ViewBag.Title = "Mentors";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="row">
+    <div class="content-header col-md-12">
+        <h3 class="pull-right">Mentors</h3>
+    </div>
+</div>
+<div class="row">
+
+    <p class="large-text h-30"></p>
+    
+    <div class="col-md-12">
+        <table class="table panes">
+            <tr class="table-danger">
+
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("View Profile", "Edit", new { /* id=item.PrimaryKey */ }) 
+                    </td>
+            </tr>
+    }
+
+        </table>
+    </div>
+</div>
+

@@ -60,11 +60,21 @@ namespace GoMentor.Domain.Managers
             var menteeList = _repo.GetMenteesByMentor(userId);
             if(menteeList == null)
             {
-                return new List<MenteeModel>();
-                //throw new Exception("No Mentees yes");
+                return null;
             }
 
-            return menteeList;
+            return menteeList.ToArray();
+        }
+
+        public IEnumerable<MenteeModel> GetAllMentees()
+        {
+            var list = _repo.GetMentees();
+            if (list == null)
+            {
+                return null;
+            }
+
+            return list;
         }
         
     }

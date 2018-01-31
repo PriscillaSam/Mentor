@@ -1,4 +1,4 @@
-﻿@model MentorModel
+﻿@model MentorProfileViewModel
 
 @{
     ViewBag.Title = "UserProfile";
@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="content-header col-md-12">
-        <h3 class="pull-right">@Model.User.FirstName's Profile</h3>
+        <h3 class="pull-right">@Model.Mentor.User.FirstName's Profile</h3>
     </div>
 </div>
 
@@ -19,11 +19,11 @@
                 <img src="~/Content/Images/42.jpg" class="img-responsive fill" />
             </div>
             <div class="pane-body">
-                <h5 class=" pane-title"><i class="fa fa-fw fa-user"></i>@Model.User.FirstName @Model.User.LastName</h5>
+                <h5 class=" pane-title"><i class="fa fa-fw fa-user"></i>@Model.Mentor.User.FirstName @Model.Mentor.User.LastName</h5>
                 <hr />
-                <p class="p-lead text-primary"><i class="fa fa-fw fa-envelope"></i> @Model.User.Email</p>
+                <p class="p-lead text-primary"><i class="fa fa-fw fa-envelope"></i> @Model.Mentor.User.Email</p>
                 <hr />
-                <p class="p-lead text-primary"><i class="fa fa-fw fa-tag"></i>Category: <small class="text-muted"> @Model.Category </small></p>
+                <p class="p-lead text-primary"><i class="fa fa-fw fa-tag"></i>Category: <small class="text-muted"> @Model.Mentor.Category </small></p>
             </div>
         </div>
 
@@ -32,13 +32,25 @@
                 <div class="col-md-7 panes">
                     <h5 class="pane-title"><i class="fa fa-fw fa-lg fa-home"></i></h5>
                     <hr />
-                    <p class="p-lead text-muted">@Model.Address </p>
+                    <p class="p-lead text-muted">@Model.Mentor.Address </p>
                 </div>
 
                 <div class="col-md-4 panes">
-                    <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-female"></i>Gender</h5>
+                    <h5 class="pane-title">
+                        @if (Model.Mentor.Gender == "Female")
+                        {
+                            <i class="fa fa-lg fa-fw fa-female"></i>
+
+                        }
+
+                        else
+                        {
+                            <i class="fa fa-lg fa-fw fa-male"></i>
+                        }
+                        Gender
+                    </h5>
                     <hr />
-                    <p class="p-lead">@Model.Gender</p>
+                    <p class="p-lead">@Model.Mentor.Gender</p>
 
                 </div>
             </div>
@@ -46,13 +58,13 @@
                 <div class="col-md-6 panes">
                     <h5 class="pane-title"><i class="fa fa-fw fa-lg fa-phone"></i>Mobile Number</h5>
                     <hr />
-                    <p class="p-lead text-muted">@Model.MobileNo</p>
+                    <p class="p-lead text-muted">@Model.Mentor.MobileNo</p>
                 </div>
 
                 <div class="col-md-4 panes">
                     <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-calendar"></i> Birthday</h5>
                     <hr />
-                    <p class="p-lead">@Model.Birthday.ToShortDateString()</p>
+                    <p class="p-lead">@Model.Mentor.Birthday.ToShortDateString()</p>
                 </div>
             </div>
 
@@ -60,7 +72,7 @@
                 <div class="col-md-9 panes">
                     <h5 class="pane-title"><i class="fa fa-lg fa-fw fa-book"></i>Bio</h5>
                     <hr />
-                    <p class="p-lead">@Model.Bio</p>
+                    <p class="p-lead">@Model.Mentor.Bio</p>
                 </div>
                 <div class="col-md-2">
                     <a class=" btn btn-round red" href="@Url.Action("edit", "mentor")"><i class="fa fa-2x fa-pencil"></i></a>
@@ -80,10 +92,56 @@
 </div>
 
 <div class="container-fluid control-background">
-    
+    @if (Model.Mentees.Count() == 0)
+    {
+        <div class="row">
+            <div class="col-6 offset-2">
+                <p class="p-large text-center text-danger" style="letter-spacing:1px;">You currently have no mentee assigned to you.</p>
+            </div>
+        </div>
 
-    <div>
 
-    </div>
+    }
+    else
+    {
+        <table class="h-30 table table-striped panes">
+            <tr class="table-danger">
+                <th>
+                    FirstName
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Mentees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Chat", "Chat", new { userId = item.UserId })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+
+
 </div>
+
 

@@ -15,6 +15,7 @@ namespace GoMentor.Domain.Interfaces.Repositories
         void AssignMentor(int userId, int mentorId);
         bool Mentored(int userId);
         MenteeModel[] NotMentored();
+        ICollection<MenteeModel> GetMentees();
         ICollection<MenteeModel> GetMenteesByMentor(int userId);
     }
 }

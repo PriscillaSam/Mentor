@@ -122,14 +122,22 @@ namespace GoMentor.Web.Controllers
         public ActionResult UserProfile()
         {
             var user = User.Identity.GetUserIdentity();
-
-            var model = _mentor.GetMentor(user.UserId);
-            if (model.Address == null)
+            var mentor = _mentor.GetMentor(user.UserId);
+            if (mentor.Address == null)
             {
                 return RedirectToAction("AddBio");
             }
+
+            var model = new MentorProfileViewModel
+            {
+                Mentor = mentor,
+                Mentees = _mentee.GetMentees(user.UserId)
+
+            };         
+            
             return View(model);
         }
+
         public ActionResult CreateSchedule()
         {
             var model = new ScheduleViewModel();

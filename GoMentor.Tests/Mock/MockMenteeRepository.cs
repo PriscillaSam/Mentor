@@ -69,6 +69,11 @@ namespace GoMentor.Tests.Mock
             return _mentees.FirstOrDefault(u => u.UserId == userId);
         }
 
+        public ICollection<MenteeModel> GetMentees()
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<MenteeModel> GetMenteesByMentor(int userId)
         {
             throw new NotImplementedException();

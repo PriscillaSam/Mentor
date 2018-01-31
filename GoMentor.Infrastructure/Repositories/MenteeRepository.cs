@@ -211,5 +211,36 @@ namespace GoMentor.Infrastructure.Repositories
 
             return mentees.ToArray();
         }
+
+        public ICollection<MenteeModel> GetMentees()
+        {
+            //Get all mentees
+            var query = from mentee in _context.Mentees
+                        select mentee;
+
+            var records = query.ToArray();
+            if (records == null)
+            {
+                return new List<MenteeModel>();
+            }
+
+            var mentees = from r in records
+                          select new MenteeModel
+                          {
+                              UserId = r.UserId,
+                              User = new UserModel
+                              {
+                                  FirstName = r.User.FirstName,
+
+                                  LastName = r.User.LastName,
+                                  Email = r.User.Email
+                              },
+                              Category = r.Category.CategoryName
+                          };
+
+            return mentees.ToArray();
+        }
+
+
     }
 }

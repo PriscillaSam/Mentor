@@ -12,47 +12,59 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12 " >
-        <p class="p-lead text-des h-30" >
-            List of mentees with pending mentor assignments
-        </p>
-        <hr />
-        <table class="h-30 table table-striped panes">
-            <tr class="table-danger">
-                <th>
-                    FirstName
-                </th>
-                <th>
-                    LastName
-                </th>
-                <th>
-                    Email
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Email)
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Assign Mentor", "Assign",new {userId = item.UserId })
-
-                    </td>
+    @if (!Model.Any())
+    {
+        
+            <div class="col-6 offset-2">
+                <p class="p-large h-30  text-danger" style="letter-spacing:1px;">There are no mentees to be assigned</p>
+            </div>
+    
+    }
+    else
+    {
+        <div class="col-md-12 ">
+            <p class="p-lead text-des h-30">
+                List of mentees with pending mentor assignments
+            </p>
+            <hr />
+            <table class="h-30 table table-striped panes">
+                <tr class="table-danger">
+                    <th>
+                        FirstName
+                    </th>
+                    <th>
+                        LastName
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th></th>
                 </tr>
-            }
 
-        </table>
-    </div>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Email)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Assign Mentor", "Assign", new { userId = item.UserId })
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    }
+
 
 
 </div>

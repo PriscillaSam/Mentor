@@ -34,7 +34,7 @@ namespace GoMentor.Infrastructure.Repositories
 
             var record = query.FirstOrDefault();
 
-          
+
 
             //Add Mentor Record
             if (record != null)
@@ -53,7 +53,7 @@ namespace GoMentor.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public MentorModel EditMentor(MentorModel model,int userId)
+        public MentorModel EditMentor(MentorModel model, int userId)
         {
 
             var mentor = _context.Mentors.Find(userId);
@@ -85,7 +85,7 @@ namespace GoMentor.Infrastructure.Repositories
             var query = from user in _context.Mentors
                         where user.UserId == userId
                         select user;
-                      
+
 
 
             var mentor = query.FirstOrDefault();
@@ -96,9 +96,9 @@ namespace GoMentor.Infrastructure.Repositories
                     UserId = mentor.UserId,
                     User = new UserModel
                     {
-                      FirstName = mentor.User.FirstName,
-                      LastName = mentor.User.LastName,
-                      Email = mentor.User.Email
+                        FirstName = mentor.User.FirstName,
+                        LastName = mentor.User.LastName,
+                        Email = mentor.User.Email
                     },
 
                     Address = mentor.Address,
@@ -118,29 +118,34 @@ namespace GoMentor.Infrastructure.Repositories
         }
 
         //Im not sure if this is the right approach to this
-        public UserModel[] GetMentors()
+        public MentorModel[] GetMentors()
         {
             //Query to get all mentors and their corresponding user object
-            var query = from user in _context.Users                        
-                        from mentor in _context.Mentors
-                        where mentor.UserId == user.UserId
-                        select new UserModel
-                        {
-                            UserId = user.UserId,
-                            FirstName = user.FirstName,
-                            LastName = user.LastName,
-                            Image = user.Image
-                            
-                        };
+            var query = from mentor in _context.Mentors
+                        select mentor;
 
-            var records = query.ToArray();
-            if(records == null)
+            var record = query.ToArray();
+
+            if (record.Any())
             {
-                throw new Exception("There are no mentor records in the database");
+                var mentors = from r in record
+                              select new MentorModel
+                              {
+                                  UserId = r.UserId,
+                                  User = new UserModel
+                                  {
+                                      FirstName = r.User.FirstName,
+                                      LastName = r.User.LastName,
+                                      Email = r.User.Email
+                                  },
+                                  Category = r.Category.CategoryName
+                              };
+
+                return mentors.ToArray();
             }
 
-            return records;
-            
+            return null;
+
         }
 
         public MentorModel[] GetMentorsByCategory(string category)
@@ -152,7 +157,7 @@ namespace GoMentor.Infrastructure.Repositories
                         select mentor;
 
             var records = query.ToArray();
-            if(records == null)
+            if (records == null)
             {
                 throw new Exception("There are no mentor records for this category");
             }
