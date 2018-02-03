@@ -15,6 +15,7 @@ namespace GoMentor.Domain.Models
         public string Role { get; set; }
         public string Image { get; set; }
 
+        public string Name => $"{FirstName}, {LastName}";
 
         public override void Validate()
         {
@@ -22,5 +23,5 @@ namespace GoMentor.Domain.Models
         }
     }
 
-    
+
 }

@@ -25,10 +25,9 @@ namespace GoMentor.Web.Controllers
             _mentor = mentor;
         }
         // GET: Admin
-        public ActionResult Index(AdminViewModel model)
+        public ActionResult Index(AdminModel model)
         {
-            model.Admin = User.Identity.GetUserIdentity();
-            model.Users = _mentee.GetNotMentored();
+            model.User = User.Identity.GetUserIdentity();
             return View(model);
         }
 
@@ -103,7 +102,7 @@ namespace GoMentor.Web.Controllers
 
             //Get Mentor List in that category
             var mentors = _mentor.GetMentorsByCategory(mentee.Category);
-            ViewBag.UserId = new SelectList(mentors, "UserId", "User.FirstName", model.Mentor.UserId);
+            ViewBag.UserId = new SelectList(mentors, "UserId", "User.Name", model.Mentor.UserId);
 
             //model.Mentors = GetSelectListItems(mentors);
 
@@ -119,7 +118,7 @@ namespace GoMentor.Web.Controllers
             var mentor = model.Mentor;
 
             var mentors = _mentor.GetMentorsByCategory(mentee.Category);
-            ViewBag.UserId = new SelectList(mentors, "UserId", "User.FirstName", model.Mentor.UserId);
+            ViewBag.UserId = new SelectList(mentors, "UserId", "User.Name", model.Mentor.UserId);
 
 
             try

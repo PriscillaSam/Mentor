@@ -147,7 +147,7 @@ namespace GoMentor.Web.Controllers
             //Get all mentees assigned to mentor
             var mentees = _mentee.GetMentees(identity.UserId);
             //Pass it to a view bag
-            ViewBag.UserId = new SelectList(mentees, "UserId", "User.FirstName", model.Mentee.UserId);
+            ViewBag.UserId = new SelectList(mentees, "UserId", "User.Name", model.Mentee.UserId);
           
 
             return View(model);
@@ -161,7 +161,7 @@ namespace GoMentor.Web.Controllers
             //Get all mentees assigned to mentor
             var mentees = _mentee.GetMentees(identity.UserId);
             //Pass it to a view bag
-            ViewBag.UserId = new SelectList(mentees, "UserId", "User.FirstName", model.Mentee.UserId);
+            ViewBag.UserId = new SelectList(mentees, "UserId", "User.Name", model.Mentee.UserId);
 
             if (ModelState.IsValid)
             {
@@ -188,6 +188,12 @@ namespace GoMentor.Web.Controllers
                     ModelState.AddModelError("not saved", ex.Message);
                 }
             }
+            return View();
+        }
+
+        //TODO
+        public ActionResult Schedules()
+        {
             return View();
         }
     }

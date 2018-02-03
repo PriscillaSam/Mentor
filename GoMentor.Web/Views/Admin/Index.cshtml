@@ -1,4 +1,4 @@
-﻿@model AdminViewModel
+﻿@model AdminModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="content-header col-lg-12">
-        <h3>Hello @Model.Admin.FirstName, @Model.Admin.LastName</h3>
+        <h3 class="pull-right">Hello @Model.User.Name</h3>
     </div>
 
 </div>

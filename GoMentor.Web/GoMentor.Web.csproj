@@ -551,7 +551,6 @@
     <Compile Include="Infrastructure\Modules\MainModule.cs" />
     <Compile Include="Models\LogInViewModel.cs" />
     <Compile Include="Models\MenteeBioModel.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\MentorBioModel.cs" />
     <Compile Include="Models\MentorProfileViewModel.cs" />
     <Compile Include="Models\MentorSignUpViewModel.cs" />
@@ -593,6 +592,7 @@
     <Content Include="Views\Mentee\Schedules.cshtml" />
     <Content Include="Views\Admin\Mentees.cshtml" />
     <Content Include="Views\Admin\Mentors.cshtml" />
+    <Content Include="Views\Mentor\Schedules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
