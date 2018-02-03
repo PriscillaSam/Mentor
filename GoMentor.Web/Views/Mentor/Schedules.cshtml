@@ -1,4 +1,4 @@
-﻿@model ScheduleModel
+﻿@model MenteeModel[]
 
 @{
     ViewBag.Title = "Schedules";
@@ -11,3 +11,34 @@
         <h3 class="pull-right">Schedules</h3>
     </div>
 </div>
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <p>@item.User.Name Schedules</p>
+        <div>
+            <p>Schedules</p>
+            <table class="table table-striped">
+                <tr>
+                    <th>Date</th>
+                    <th>Details</th>
+                </tr>
+                @foreach (var schedule in item.Schedules)
+                {
+
+                    <tr>
+                        <td>@schedule.Date</td>
+                        <td>@schedule.Details</td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+
+    }
+}
+else
+{
+    <p>You have no schedules</p>
+
+}

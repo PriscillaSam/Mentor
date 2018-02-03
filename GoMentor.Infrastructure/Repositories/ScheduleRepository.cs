@@ -26,10 +26,10 @@ namespace GoMentor.Infrastructure.Repositories
             //Check if Schedule already exists
             var sch = from s in _context.Schedules
                       where s.Date == date
-                      where s.MenteeId == userId                                       
+                      where s.MenteeId == userId
                       select s;
-                     
-            if(sch.FirstOrDefault() != null)
+
+            if (sch.FirstOrDefault() != null)
             {
                 throw new Exception("This schedule already exists");
 
@@ -59,10 +59,10 @@ namespace GoMentor.Infrastructure.Repositories
         {
 
             var schedule = _context.Schedules.Find(scheduleId);
-            if(schedule != null)
+            if (schedule != null)
             {
                 _context.Entry(schedule).State = System.Data.Entity.EntityState.Deleted;
-                return _context.SaveChanges();                
+                return _context.SaveChanges();
             }
 
             return 0;
@@ -90,18 +90,50 @@ namespace GoMentor.Infrastructure.Repositories
 
             return schedules.ToArray();
         }
-       
-        public ScheduleModel[] MentorSchedules(int userId)
+
+        public MenteeModel[] MentorSchedules(int userId)
         {
             //Get all schedules based on mentor's mentees
-            var query = from m in _context.Mentors
-                        from mentee in m.Mentees
-                        from sch in mentee.Schedules
+            var query = from mentee in _context.Mentees
                         where mentee.Mentor.UserId == userId
-                        group sch by mentee;
-            return null;     
+                        where mentee.Schedules.Count != 0
+                        select new
+                        {
+                            mentee,
+                            mentee.Schedules
+                        };
+
+            var records = query.ToArray();
+
+
+            var elements = from record in records
+                           let schedules = from s in record.Schedules
+                                           where DateTime.Parse(s.Date) > DateTime.Now
+                                           select new ScheduleModel
+                                           {
+                                               ScheduleId = s.ScheduleId,
+                                               Date = DateTime.Parse(s.Date),
+                                               DateCreated = s.DateCreated,
+                                               Time = DateTime.Parse(s.Time),
+                                               Details = s.Details
+                                           }
+                           select new MenteeModel
+                           {
+                               User = new UserModel
+                               {
+                                   UserId = record.mentee.UserId,
+                                   FirstName = record.mentee.User.FirstName,
+                                   LastName = record.mentee.User.LastName
+                               },
+
+                               Schedules = schedules.ToArray()
+                           };
+
+
+            return elements.ToArray();
+
         }
 
-       
+
     }
 }

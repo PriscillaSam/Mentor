@@ -12,5 +12,6 @@ namespace GoMentor.Domain.Interfaces.Repositories
         void AddSchedule(ScheduleModel model, int userId);
         int DeleteSchedule(int scheduleId);
         ScheduleModel[] GetSchedules(int userId);
+        MenteeModel[] MentorSchedules(int userId);
     }
 }

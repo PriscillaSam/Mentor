@@ -194,7 +194,9 @@ namespace GoMentor.Web.Controllers
         //TODO
         public ActionResult Schedules()
         {
-            return View();
+            var user = User.Identity.GetUserIdentity();
+            var model = _schedule.GetMentorSchedules(user.UserId);
+            return View(model);
         }
     }
 }

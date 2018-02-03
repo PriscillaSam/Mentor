@@ -36,5 +36,10 @@ namespace GoMentor.Domain.Managers
         {
             return  _scheduleRepo.GetSchedules(userId);
         }
+
+        public MenteeModel[] GetMentorSchedules(int userId)
+        {
+            return _scheduleRepo.MentorSchedules(userId);
+        }
     }
 }
