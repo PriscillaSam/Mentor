@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201801302212316_AddedForeignKeyForUser.Designer.cs">
       <DependentUpon>201801302212316_AddedForeignKeyForUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802030156569_ChangedToMenteeId.cs" />
+    <Compile Include="Migrations\201802030156569_ChangedToMenteeId.Designer.cs">
+      <DependentUpon>201802030156569_ChangedToMenteeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ForumRepository.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801302212316_AddedForeignKeyForUser.resx">
       <DependentUpon>201801302212316_AddedForeignKeyForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802030156569_ChangedToMenteeId.resx">
+      <DependentUpon>201802030156569_ChangedToMenteeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

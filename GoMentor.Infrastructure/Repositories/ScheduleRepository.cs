@@ -26,7 +26,7 @@ namespace GoMentor.Infrastructure.Repositories
             //Check if Schedule already exists
             var sch = from s in _context.Schedules
                       where s.Date == date
-                      where s.UserId == userId                                       
+                      where s.MenteeId == userId                                       
                       select s;
                      
             if(sch.FirstOrDefault() != null)
@@ -73,7 +73,7 @@ namespace GoMentor.Infrastructure.Repositories
         {
             //Get Schedules based on userId
             var query = from schedule in _context.Schedules
-                        where schedule.UserId == userId
+                        where schedule.MenteeId == userId
                         select schedule;
 
 
@@ -91,6 +91,16 @@ namespace GoMentor.Infrastructure.Repositories
             return schedules.ToArray();
         }
        
+        public ScheduleModel[] MentorSchedules(int userId)
+        {
+            //Get all schedules based on mentor's mentees
+            var query = from m in _context.Mentors
+                        from mentee in m.Mentees
+                        from sch in mentee.Schedules
+                        where mentee.Mentor.UserId == userId
+                        group sch by mentee;
+            return null;     
+        }
 
        
     }

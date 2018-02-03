@@ -14,8 +14,9 @@ namespace GoMentor.Infrastructure.Entities
         public string Details { get; set; }
 
         [ForeignKey("Mentee")]
-        public int UserId { get; set; }
+        public int MenteeId { get; set; }
         public virtual Mentee Mentee { get; set; }
-
+        
+       
     }
 }
