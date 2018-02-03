@@ -10,52 +10,65 @@
         <h3 class="pull-right">Mentors</h3>
     </div>
 </div>
-<div class="row">
 
-    <p class="large-text h-30"></p>
-    
-    <div class="col-md-12">
-        <table class="table panes">
-            <tr class="table-danger">
+@if (Model.Any())
+{
+    <div class="row">
 
-                <th>
-                    @Html.DisplayNameFor(model => model.User.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User.LastName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
 
-                <th></th>
-            </tr>
+        <div class="col-md-12">
+            <table class="table panes">
+                <tr class="table-danger">
 
-            @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.ActionLink("View Profile", "Edit", new { /* id=item.PrimaryKey */ }) 
-                    </td>
-            </tr>
-    }
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
 
-        </table>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.ActionLink("View Profile", "Edit", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
     </div>
-</div>
+}
+
+else
+{
+    <div class="row">
+        <div class="col-6 offset-2">
+            <p class="p-large text-center text-danger" style="letter-spacing:1px;">There are no mentors signed up yet. <a href="@Url.Action("signupmentor")">Add one now</a></p>
+        </div>
+    </div>
+}
+
 

@@ -11,44 +11,59 @@
     </div>
 </div>
 
-@foreach (var item in Model)
+@if (Model.Any())
 {
-    <div>
-        <dl class="dl-horizontal">
+    foreach (var item in Model)
+    {
+        <div>
+            <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => item.Date)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Date)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => item.Date)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => item.Date)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => item.Time)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Time)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => item.Time)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => item.Time)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => item.DateCreated)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => item.DateCreated)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => item.DateCreated)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => item.DateCreated)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => item.Details)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Details)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => item.Details)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => item.Details)
+                </dd>
 
-        </dl>
+            </dl>
+        </div>
+    }
+
+
+
+}
+
+else
+{
+    <div class="row">
+        <div class="col-6 offset-2">
+            <p class="p-large text-center text-danger h-30" style="letter-spacing:1px;">You don't have any schedules pending</p>
+        </div>
     </div>
 }
 

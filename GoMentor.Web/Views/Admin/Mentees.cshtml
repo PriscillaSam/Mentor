@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<GoMentor.Domain.Models.MenteeModel>
 
 @{
+    /**/
+
     ViewBag.Title = "Mentees";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -11,50 +13,63 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <table class="table h-30 panes ">
-            <tr class="table-danger">
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table h-30 panes ">
+                <tr class="table-danger">
 
-                <th>
-                    @Html.DisplayNameFor(model => model.User.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User.LastName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
 
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        @Html.ActionLink("View Profile", "Edit", new { /* id=item.PrimaryKey */ }) 
-                     
-                    </td>
+                    <th></th>
                 </tr>
-            }
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.ActionLink("View Profile", "Edit", new { /* id=item.PrimaryKey */ })
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
     </div>
-</div>
+
+}
+
+else
+{
+    <div class="row">
+        <div class="col-6 offset-2">
+            <p class="p-large text-center text-danger" style="letter-spacing:1px;">There are no mentees signed up yet.</p>
+        </div>
+    </div>
+}
 
